@@ -67,123 +67,127 @@
 
     
     <script>
+const voitures = {
 
-        const voitures = {
+    m2: {
+        nom: "BMW M2",
+        image: "voiture.jpg.jpg",
+        puissance: 460,
+        couple: 550,
+        poids: 1730,
+        zeroCent: 4.1,
+        prix: 70000
+    },
 
-            m2: {
-                nom: "BMW M2",
-                image: "voiture.jpg.jpg",
-                puissance: 460,
-                couple: 550,
-                zeroCent: 4.1,
-                poids: 1730,
-                prix: 70000,
-                avis: "Excellente propulsion sportive avec beaucoup de sensations."
-            },
+    rs3: {
+        nom: "Audi RS3",
+        image: "voiture.jpg1.jpg",
+        puissance: 400,
+        couple: 500,
+        poids: 1570,
+        zeroCent: 3.8,
+        prix: 68000
+    },
 
-            rs3: {
-                nom: "Audi RS3",
-                image: "voiture.jpg1.jpg",
-                puissance: 400,
-                couple: 500,
-                zeroCent: 3.8,
-                poids: 1570,
-                prix: 68000,
-                avis: "Très efficace grâce à la transmission Quattro."
-            },
+    c63: {
+        nom: "Mercedes C63",
+        image: "voiture.jpg2.jpg",
+        puissance: 476,
+        couple: 650,
+        poids: 1890,
+        zeroCent: 4.0,
+        prix: 85000
+    }
+};
 
-            c63: {
-                nom: "Mercedes C63",
-                image: "voiture.jpg2.jpg",
-                puissance: 476,
-                couple: 650,
-                zeroCent: 4.0,
-                poids: 1890,
-                prix: 85000,
-                avis: "Gros caractère et moteur très expressif."
-            }
+function afficherVoiture() {
 
-        };
+    let choix = document.getElementById("voiture").value;
 
-        function afficherVoiture() {
+    let voiture = voitures[choix];
 
-            let choix = document.getElementById("voiture").value;
+    let rapport = (voiture.poids / voiture.puissance).toFixed(2);
 
-            let voiture = voitures[choix];
+    document.getElementById("ficheVoiture").innerHTML = `
 
-            document.getElementById("ficheVoiture").innerHTML = `
-                <h2>${voiture.nom}</h2>
+        <h2>${voiture.nom}</h2>
 
-                <img src="${voiture.image}" width="500">
+        <img src="${voiture.image}" width="500">
 
-                <p><strong>Puissance :</strong> ${voiture.puissance} ch</p>
+        <p><strong>Puissance :</strong> ${voiture.puissance} ch</p>
 
-                <p><strong>Couple :</strong> ${voiture.couple} Nm</p>
+        <p><strong>Couple :</strong> ${voiture.couple} Nm</p>
 
-                <p><strong>0 à 100 :</strong> ${voiture.zeroCent} s</p>
+        <p><strong>Poids :</strong> ${voiture.poids} kg</p>
 
-                <p><strong>Poids :</strong> ${voiture.poids} kg</p>
+        <p><strong>Rapport poids/puissance :</strong> ${rapport} kg/ch</p>
 
-                <p><strong>Prix :</strong> ${voiture.prix.toLocaleString()} €</p>
+        <p><strong>0 à 100 :</strong> ${voiture.zeroCent} s</p>
 
-                <p><strong>Avis :</strong> ${voiture.avis}</p>
-            `;
-        }
+        <p><strong>Prix :</strong> ${voiture.prix.toLocaleString()} €</p>
+    `;
+}
 
-        function calculer() {
+function calculer() {
 
-            let poids = Number(document.getElementById("poids").value);
-            let puissance = Number(document.getElementById("puissance").value);
+    let poids = Number(document.getElementById("poids").value);
 
-            if (poids <= 0 || puissance <= 0) {
+    let puissance = Number(document.getElementById("puissance").value);
 
-                document.getElementById("resultat").innerHTML =
-                    "Veuillez entrer des valeurs valides.";
+    if (poids <= 0 || puissance <= 0) {
 
-                return;
-            }
+        document.getElementById("resultat").innerHTML =
+            "Veuillez entrer des valeurs valides.";
 
-            let rapport = poids / puissance;
+        return;
+    }
 
-            let message = "";
+    let rapport = poids / puissance;
 
-            if (rapport < 4) {
-                message = "🔥 Très sportive";
-            }
-            else if (rapport < 6) {
-                message = "👍 Performante";
-            }
-            else {
-                message = "🚗 Usage quotidien";
-            }
+    let message = "";
 
-            document.getElementById("resultat").innerHTML =
-                "Rapport poids/puissance : " +
-                rapport.toFixed(2) +
-                " kg/ch<br>" +
-                message;
-        }
+    if (rapport < 4) {
+        message = "🔥 Très sportive";
+    }
+    else if (rapport < 6) {
+        message = "👍 Performante";
+    }
+    else {
+        message = "🚗 Usage quotidien";
+    }
 
-        function comparerVoitures() {
+    document.getElementById("resultat").innerHTML =
+        "Rapport poids/puissance : " +
+        rapport.toFixed(2) +
+        " kg/ch<br>" +
+        message;
+}
 
-            let v1 = voitures[document.getElementById("voiture1").value];
-            let v2 = voitures[document.getElementById("voiture2").value];
+function comparerVoitures() {
 
-            let html = "";
+    let v1 = voitures[document.getElementById("voiture1").value];
+    let v2 = voitures[document.getElementById("voiture2").value];
 
-            html += `<h3>${v1.nom} VS ${v2.nom}</h3>`;
+    let html = `<h3>${v1.nom} VS ${v2.nom}</h3>`;
 
-            html += `<p>Puissance : ${v1.puissance} ch vs ${v2.puissance} ch</p>`;
+    html += `<p>🏆 Puissance : ${
+        v1.puissance > v2.puissance ? v1.nom : v2.nom
+    }</p>`;
 
-            html += `<p>Couple : ${v1.couple} Nm vs ${v2.couple} Nm</p>`;
+    html += `<p>🏆 Couple : ${
+        v1.couple > v2.couple ? v1.nom : v2.nom
+    }</p>`;
 
-            html += `<p>0 à 100 : ${v1.zeroCent} s vs ${v2.zeroCent} s</p>`;
+    html += `<p>🏆 0 à 100 : ${
+        v1.zeroCent < v2.zeroCent ? v1.nom : v2.nom
+    }</p>`;
 
-            html += `<p>Prix : ${v1.prix.toLocaleString()} € vs ${v2.prix.toLocaleString()} €</p>`;
+    html += `<p>🏆 Prix : ${
+        v1.prix < v2.prix ? v1.nom : v2.nom
+    }</p>`;
 
-            document.getElementById("comparaison").innerHTML = html;
-        }
-
+    document.getElementById("comparaison").innerHTML = html;
+}
     </script>
 
 </body>
