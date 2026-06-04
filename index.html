@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>comparauto</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1>🚗 ComparAuto 🚗</h1>
+    <p class="slogan">
+    Comparez les performances des sportives en quelques clics.
+</p>
+
+    <h2>Fiche véhicule</h2>
+
+    <select id="voiture">
+        <option value="m2">BMW M2</option>
+        <option value="rs3">Audi RS3</option>
+        <option value="c63">Mercedes C63</option>
+    </select>
+
+    <button onclick="afficherVoiture()">Afficher</button>
+
+    <div id="ficheVoiture"></div>
+
+    <hr>
+<h2>Comparateur</h2>
+
+    <p>Voiture 1</p>
+    <select id="voiture1">
+        <option value="m2">BMW M2</option>
+        <option value="rs3">Audi RS3</option>
+        <option value="c63">Mercedes C63</option>
+    </select>
+
+    <p>Voiture 2</p>
+    <select id="voiture2">
+        <option value="m2">BMW M2</option>
+        <option value="rs3">Audi RS3</option>
+        <option value="c63">Mercedes C63</option>
+    </select>
+
+    <br><br>
+
+    <button onclick="comparerVoitures()">Comparer</button>
+
+    <div id="comparaison"></div>
+
+    <h2>Calculateur poids / puissance</h2>
+
+    <p>Poids (kg)</p>
+    <input type="number" id="poids">
+
+    <p>Puissance (ch)</p>
+    <input type="number" id="puissance">
+
+    <br><br>
+
+    <button onclick="calculer()">Calculer</button>
+
+    <p id="resultat"></p>
+
+    <hr>
+
+    
+    <script>
+
+        const voitures = {
+
+            m2: {
+                nom: "BMW M2",
+                image: "voiture.jpg.jpg",
+                puissance: 460,
+                couple: 550,
+                zeroCent: 4.1,
+                prix: 70000,
+                avis: "Excellente propulsion sportive avec beaucoup de sensations."
+            },
+
+            rs3: {
+                nom: "Audi RS3",
+                image: "voiture.jpg1.jpg",
+                puissance: 400,
+                couple: 500,
+                zeroCent: 3.8,
+                prix: 68000,
+                avis: "Très efficace grâce à la transmission Quattro."
+            },
+
+            c63: {
+                nom: "Mercedes C63",
+                image: "voiture.jpg2.jpg",
+                puissance: 476,
+                couple: 650,
+                zeroCent: 4.0,
+                prix: 85000,
+                avis: "Gros caractère et moteur très expressif."
+            }
+
+        };
+
+        function afficherVoiture() {
+
+            let choix = document.getElementById("voiture").value;
+
+            let voiture = voitures[choix];
+
+            document.getElementById("ficheVoiture").innerHTML = `
+                <h2>${voiture.nom}</h2>
+
+                <img src="${voiture.image}" width="500">
+
+                <p><strong>Puissance :</strong> ${voiture.puissance} ch</p>
+
+                <p><strong>Couple :</strong> ${voiture.couple} Nm</p>
+
+                <p><strong>0 à 100 :</strong> ${voiture.zeroCent} s</p>
+
+                <p><strong>Prix :</strong> ${voiture.prix.toLocaleString()} €</p>
+
+                <p><strong>Avis :</strong> ${voiture.avis}</p>
+            `;
+        }
+
+        function calculer() {
+
+            let poids = Number(document.getElementById("poids").value);
+            let puissance = Number(document.getElementById("puissance").value);
+
+            if (poids <= 0 || puissance <= 0) {
+
+                document.getElementById("resultat").innerHTML =
+                    "Veuillez entrer des valeurs valides.";
+
+                return;
+            }
+
+            let rapport = poids / puissance;
+
+            let message = "";
+
+            if (rapport < 4) {
+                message = "🔥 Très sportive";
+            }
+            else if (rapport < 6) {
+                message = "👍 Performante";
+            }
+            else {
+                message = "🚗 Usage quotidien";
+            }
+
+            document.getElementById("resultat").innerHTML =
+                "Rapport poids/puissance : " +
+                rapport.toFixed(2) +
+                " kg/ch<br>" +
+                message;
+        }
+
+        function comparerVoitures() {
+
+            let v1 = voitures[document.getElementById("voiture1").value];
+            let v2 = voitures[document.getElementById("voiture2").value];
+
+            let html = "";
+
+            html += `<h3>${v1.nom} VS ${v2.nom}</h3>`;
+
+            html += `<p>Puissance : ${v1.puissance} ch vs ${v2.puissance} ch</p>`;
+
+            html += `<p>Couple : ${v1.couple} Nm vs ${v2.couple} Nm</p>`;
+
+            html += `<p>0 à 100 : ${v1.zeroCent} s vs ${v2.zeroCent} s</p>`;
+
+            html += `<p>Prix : ${v1.prix.toLocaleString()} € vs ${v2.prix.toLocaleString()} €</p>`;
+
+            document.getElementById("comparaison").innerHTML = html;
+        }
+
+    </script>
+
+</body>
+
+</html>

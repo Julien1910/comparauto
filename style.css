@@ -1,0 +1,84 @@
+body {
+    background-color: #111;
+    color: white;
+    font-family: Arial, sans-serif;
+    margin: 30px;
+}
+
+h1 {
+    color: #e10600;
+    text-align: center;
+    font-size: 50px;
+}
+
+h2 {
+    color: #00a3ff;
+}
+
+select {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+input {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 8px;
+}
+
+button {
+    background-color: #e10600;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+#ficheVoiture {
+    background-color: #222;
+    padding: 20px;
+    border-radius: 15px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#comparaison {
+    background-color: #222;
+    padding: 20px;
+    border-radius: 15px;
+    margin-top: 20px;
+}
+
+#resultat {
+    background-color: #222;
+    padding: 20px;
+    border-radius: 15px;
+    margin-top: 20px;
+}
+
+img {
+    border-radius: 15px;
+    max-width: 100%;
+    margin-top: 10px;
+}
+
+hr {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+.slogan {
+    text-align: center;
+    color: #aaa;
+    font-size: 18px;
+    margin-top: -10px;
+    margin-bottom: 30px;
+}
