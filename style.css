@@ -1,84 +1,98 @@
 body {
-    background-color: #111;
-    color: white;
+    background: #0f172a;
+    color: #f8fafc;
     font-family: Arial, sans-serif;
-    margin: 30px;
+    margin: 0;
+    padding: 30px;
 }
 
 h1 {
-    color: #e10600;
     text-align: center;
-    font-size: 50px;
-}
-
-h2 {
-    color: #00a3ff;
-}
-
-select {
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 8px;
+    font-size: 55px;
     margin-bottom: 10px;
+    color: white;
 }
 
+.slogan {
+    text-align: center;
+    color: #94a3b8;
+    font-size: 18px;
+    margin-bottom: 40px;
+}
+
+h2,
+h3 {
+    color: white;
+}
+
+select,
 input {
-    padding: 10px;
+    width: 250px;
+    padding: 12px;
+    margin: 5px;
+    border: none;
+    border-radius: 10px;
+    background: #1e293b;
+    color: white;
     font-size: 16px;
-    border-radius: 8px;
 }
 
 button {
-    background-color: #e10600;
+    background: #3b82f6;
     color: white;
     border: none;
     padding: 12px 20px;
-    border-radius: 8px;
+    border-radius: 10px;
     cursor: pointer;
     font-size: 16px;
     transition: 0.3s;
 }
 
 button:hover {
-    transform: scale(1.05);
+    transform: translateY(-2px);
+    background: #2563eb;
 }
 
 #ficheVoiture {
-    background-color: #222;
-    padding: 20px;
-    border-radius: 15px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    background: #1e293b;
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
 }
 
 #comparaison {
-    background-color: #222;
-    padding: 20px;
-    border-radius: 15px;
-    margin-top: 20px;
-}
-
-#resultat {
-    background-color: #222;
-    padding: 20px;
-    border-radius: 15px;
-    margin-top: 20px;
+    background: #1e293b;
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
 }
 
 img {
+    width: 100%;
+    max-width: 700px;
     border-radius: 15px;
-    max-width: 100%;
-    margin-top: 10px;
+    margin: 15px 0;
 }
 
-hr {
-    margin-top: 40px;
-    margin-bottom: 40px;
-}
-.slogan {
-    text-align: center;
-    color: #aaa;
+p {
     font-size: 18px;
-    margin-top: -10px;
-    margin-bottom: 30px;
+    line-height: 1.8;
+}
+
+#resultat {
+    margin-top: 15px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.container {
+    text-align: center;
+}
+
+strong {
+    color: #60a5fa;
 }
